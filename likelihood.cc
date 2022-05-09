@@ -25,14 +25,16 @@ double prob(vector<int> daten, double mu){
 }
 
 int main(){
-  ofstream fout ("likelihood.txt");
+  ofstream fout ("likelihood.txt");  
+  ofstream fout2 ("nll.txt");
   Construct();
   cout << prob(daten, 3.11538) << endl;
   double a = 0;
   for (int i = 0; i<61;i++){
     fout << a << " " << prob(daten, a) << endl;
-    cout << a << " " << prob(daten, a) << endl;
+    fout2 << a << " " << -2*log(prob(daten, a)) << endl;
     a += 0.1;
   }
   fout.close();
+  fout2.close();
 }
